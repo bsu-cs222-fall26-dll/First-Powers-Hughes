@@ -3,14 +3,17 @@ package edu.bsu.cs222.wikipedia;
 import com.jayway.jsonpath.JsonPath;
 import net.minidev.json.JSONArray;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URISyntaxException;
+import java.nio.charset.StandardCharsets;
 
 public class WikipediaRevisionParser {
-    public String getJsonData(String userInput) throws IOException, URISyntaxException {
+    public InputStream getJsonData(String userInput) throws IOException, URISyntaxException {
        WikipediaConnector connector = new WikipediaConnector();
-        return connector.startSearcher(userInput);
+       String jsonData = connector.startSearcher(userInput);
+        return new ByteArrayInputStream(jsonData.getBytes(StandardCharsets.UTF_8));
     }
 
     public String parse(InputStream DataStream, int Index,String rootElement) throws IOException {

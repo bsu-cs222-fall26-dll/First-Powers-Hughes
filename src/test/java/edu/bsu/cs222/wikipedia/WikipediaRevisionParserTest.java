@@ -25,8 +25,16 @@ public class WikipediaRevisionParserTest {
     @Test
     public void testForJsonData() throws IOException, URISyntaxException {
         WikipediaRevisionParser parser = new WikipediaRevisionParser();
-        String jsonData = parser.getJsonData("Apollo");
-        Assertions.assertNotNull(jsonData);
+        InputStream DataStream = parser.getJsonData("Apollo");
+        Assertions.assertNotNull(DataStream);
+
+    }
+    @Test
+    public void testUserInputApollo() throws IOException, URISyntaxException {
+        WikipediaRevisionParser parser = new WikipediaRevisionParser();
+        InputStream DataStream=parser.getJsonData("Apollo");
+        String user = parser.parse(DataStream,1,"$..user");
+        Assertions.assertEquals("Krightonn",user);
 
     }
 
