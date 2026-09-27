@@ -37,5 +37,11 @@ public class WikipediaRevisionParserTest {
         Assertions.assertEquals("Krightonn",user);
 
     }
+    @Test
+    public void testFormatOutputTimestamp() throws IOException, URISyntaxException {
+        WikipediaRevisionParser parser = new WikipediaRevisionParser();
+        String output = (parser.formatOutput(parser.getJsonData("Apollo")));
+        Assertions.assertEquals("2026-09-12T16:46:08Z", output);
+    }
 
 }

@@ -22,10 +22,8 @@ public class WikipediaRevisionParser {
 
     }
     public String formatOutput(InputStream DataStream) throws IOException {
-        StringBuilder outputBuilder = null;
-        for(int i=0;i<16;i++){
-            outputBuilder.append(i+1).append("  ").append(parse(DataStream,i,"$..timestamp")).append("  ").append(parse(DataStream,i,"$..user")).append("\n");
-        }
+        StringBuilder outputBuilder = new StringBuilder();
+        outputBuilder.append(parse(DataStream,0,"$..timestamp"));
         return outputBuilder.toString();
     }
 }
