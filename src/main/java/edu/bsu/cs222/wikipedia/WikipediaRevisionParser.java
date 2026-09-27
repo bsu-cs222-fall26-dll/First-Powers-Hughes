@@ -16,15 +16,15 @@ public class WikipediaRevisionParser {
         return new ByteArrayInputStream(jsonData.getBytes(StandardCharsets.UTF_8));
     }
 
-    public String parse(InputStream DataStream, int Index,String rootElement) throws IOException {
+    public JSONArray parse(InputStream DataStream,String rootElement) throws IOException {
         JSONArray result = JsonPath.read(DataStream,rootElement);
-        return result.get(Index).toString();
+        return result;
 
     }
     public String formatOutput(InputStream DataStream) throws IOException {
         StringBuilder outputBuilder = new StringBuilder();
-        outputBuilder.append(parse(DataStream,0,"$..timestamp"));
-        return outputBuilder.toString();
+
+        return null;
     }
 }
 

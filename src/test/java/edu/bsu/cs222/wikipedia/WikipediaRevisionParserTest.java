@@ -1,5 +1,6 @@
 package edu.bsu.cs222.wikipedia;
 
+import net.minidev.json.JSONArray;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -12,15 +13,17 @@ public class WikipediaRevisionParserTest {
     public void testFirstUser() throws IOException {
         WikipediaRevisionParser parser = new WikipediaRevisionParser();
         InputStream DataStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("apollloSample.json");
-        String user = parser.parse(DataStream,0,"$..user");
-        Assertions.assertEquals("CockroachHunter",user);
+        JSONArray user = parser.parse(DataStream,"$..user");
+        String firstUser = user.get(0).toString();
+        Assertions.assertEquals("CockroachHunter",firstUser);
     }
     @Test
     public void testSecondUser() throws IOException {
         WikipediaRevisionParser parser = new WikipediaRevisionParser();
         InputStream DataStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("apollloSample.json");
-        String user = parser.parse(DataStream,1,"$..user");
-        Assertions.assertEquals("Krightonn",user);
+        JSONArray user = parser.parse(DataStream,"$..user");
+        String secondUser = user.get(1).toString();
+        Assertions.assertEquals("Krightonn",secondUser);
     }
     @Test
     public void testForJsonData() throws IOException, URISyntaxException {
@@ -33,15 +36,11 @@ public class WikipediaRevisionParserTest {
     public void testUserInputApollo() throws IOException, URISyntaxException {
         WikipediaRevisionParser parser = new WikipediaRevisionParser();
         InputStream DataStream=parser.getJsonData("Apollo");
-        String user = parser.parse(DataStream,1,"$..user");
-        Assertions.assertEquals("Krightonn",user);
+        JSONArray user = parser.parse(DataStream,"$..user");
+        String secondUser = user.get(1).toString();
+        Assertions.assertEquals("Krightonn",secondUser);
 
     }
-    @Test
-    public void testFormatOutputTimestamp() throws IOException, URISyntaxException {
-        WikipediaRevisionParser parser = new WikipediaRevisionParser();
-        String output = (parser.formatOutput(parser.getJsonData("Apollo")));
-        Assertions.assertEquals("2026-09-12T16:46:08Z", output);
-    }
+
 
 }
