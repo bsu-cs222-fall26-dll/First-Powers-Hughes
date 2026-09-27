@@ -18,7 +18,7 @@ public class UI extends Application {
     private final TextField inputField = new TextField();
     private final TextField outputField = new TextField();
 
-    public static void main(String[] args) {
+    static void main(String[] args) {
         launch(args);
     }
 
