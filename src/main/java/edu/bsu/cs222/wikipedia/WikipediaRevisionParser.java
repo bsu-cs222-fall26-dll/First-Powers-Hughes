@@ -22,7 +22,8 @@ public class WikipediaRevisionParser {
 
     }
     public String formatOutput(InputStream DataStream) throws IOException {
-        StringBuilder outputBuilder = new StringBuilder();
+
+
 
         return null;
     }
