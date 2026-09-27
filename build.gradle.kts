@@ -1,10 +1,12 @@
 plugins {
     id("java")
     id ("application")
+    id("org.openjfx.javafxplugin") version "0.1.0"
 }
 
 group = "edu.bsu.cs222.wikipedia"
 version = "1.0-SNAPSHOT"
+
 
 repositories {
     mavenCentral()
@@ -17,9 +19,17 @@ dependencies {
     implementation(group = "com.jayway.jsonpath", name = "json-path", version = "2.8.0")
     implementation(group = "net.minidev", name = "json-smart", version = "2.5.0")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    testImplementation(platform("org.junit:junit-bom:5.10.1"))
 }
 
 
 tasks.test {
     useJUnitPlatform()
+}
+javafx {
+    version = "22-ea+16"
+    modules("javafx.controls", "javafx.fxml")
+}
+application {
+    mainClass.set("edu.bsu.cs.UI")
 }

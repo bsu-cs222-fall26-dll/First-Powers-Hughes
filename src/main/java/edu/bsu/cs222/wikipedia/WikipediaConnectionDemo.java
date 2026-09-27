@@ -8,11 +8,10 @@ import java.nio.charset.Charset;
 
 public class WikipediaConnectionDemo {
 
-    public static void main(String[] args) throws IOException, URISyntaxException {
+    public void startProgram() throws IOException, URISyntaxException {
         URLConnection connection = connectToWikipedia();
         String jsonData = readJsonAsStringFrom(connection);
         printRawJson(jsonData);
-
     }
 
     private static URLConnection connectToWikipedia() throws IOException, URISyntaxException {
