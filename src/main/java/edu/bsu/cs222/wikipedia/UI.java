@@ -55,8 +55,8 @@ public class UI extends Application {
         });
     }
     private void searchInputFieldWriteOutputField() throws IOException, URISyntaxException {
-        WikipediaConnector connector = new WikipediaConnector();
-        connector.startSearcher(inputField.getText());
+        WikipediaRevisionParser parser = new WikipediaRevisionParser();
+        parser.getJsonData(inputField.getText());
 
 
 }}
