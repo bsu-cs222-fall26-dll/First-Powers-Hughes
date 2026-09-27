@@ -11,14 +11,14 @@ public class WikipediaRevisionParserTest {
     public void testFirstUser() throws IOException {
         WikipediaRevisionParser parser = new WikipediaRevisionParser();
         InputStream testDataStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("apollloSample.json");
-        String user = parser.parse(testDataStream,0);
+        String user = parser.parse(testDataStream,0,"$..user");
         Assertions.assertEquals("CockroachHunter",user);
     }
     @Test
     public void testSecondUser() throws IOException {
         WikipediaRevisionParser parser = new WikipediaRevisionParser();
         InputStream testDataStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("apollloSample.json");
-        String user = parser.parse(testDataStream,1);
+        String user = parser.parse(testDataStream,1,"$..user");
         Assertions.assertEquals("Krightonn",user);
     }
 }

@@ -7,8 +7,8 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class WikipediaRevisionParser {
-    public String parse(InputStream testDataStream, int Index) throws IOException {
-        JSONArray result = (JSONArray) JsonPath.read(testDataStream,"$..user");
+    public String parse(InputStream testDataStream, int Index,String rootElement) throws IOException {
+        JSONArray result = JsonPath.read(testDataStream,rootElement);
         return result.get(Index).toString();
     }
 }
