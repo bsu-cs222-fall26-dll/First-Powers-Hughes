@@ -9,6 +9,8 @@ import javafx.stage.Stage;
 import javafx.scene.control.Button;
 
 import java.awt.*;
+import java.io.IOException;
+import java.net.URISyntaxException;
 
 
 public class UI extends Application {
@@ -42,10 +44,20 @@ public class UI extends Application {
     return root;
     }
     private void configureSearchButton(){
-        searchButton.setOnAction(actionEvent -> searchInputFieldWriteOutputField());
+        searchButton.setOnAction(actionEvent -> {
+            try {
+                searchInputFieldWriteOutputField();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            } catch (URISyntaxException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
-    private void searchInputFieldWriteOutputField(){
+    private void searchInputFieldWriteOutputField() throws IOException, URISyntaxException {
         WikipediaConnector connector = new WikipediaConnector();
+        String userInput = inputField.getText();
+        outputField.setText(connector.startSearcher(userInput));
 
 
 }}
