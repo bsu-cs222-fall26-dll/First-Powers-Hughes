@@ -6,17 +6,17 @@ import java.net.URLConnection;
 import java.net.URLEncoder;
 import java.nio.charset.Charset;
 
-public class WikipediaConnectionDemo {
+public class WikipediaConnector {
 
-    public void startProgram() throws IOException, URISyntaxException {
-        URLConnection connection = connectToWikipedia();
+    public void startSearcher(String userInput) throws IOException, URISyntaxException {
+        URLConnection connection = connectToWikipedia(userInput);
         String jsonData = readJsonAsStringFrom(connection);
         printRawJson(jsonData);
     }
 
-    private static URLConnection connectToWikipedia() throws IOException, URISyntaxException {
+    private static URLConnection connectToWikipedia(String search) throws IOException, URISyntaxException {
         String encodedUrlString = "https://en.wikipedia.org/w/api.php?action=query&format=json&prop=revisions&titles=" +
-                URLEncoder.encode("Apollo", Charset.defaultCharset()) +
+                URLEncoder.encode(search, Charset.defaultCharset()) +
                 "&rvprop=timestamp" + URLEncoder.encode("|",Charset.defaultCharset()) + "user&rvlimit=4&redirects";
         URI uri = new URI(encodedUrlString);
         URLConnection connection = uri.toURL().openConnection();

@@ -24,6 +24,7 @@ public class UI extends Application {
     public void start(Stage primaryStage) throws Exception {
         outputField.setEditable(false);
         configure(primaryStage);
+        configureSearchButton();
     }
 
     private void configure(Stage stage) {
@@ -40,6 +41,12 @@ public class UI extends Application {
                 outputField);
     return root;
     }
+    private void configureSearchButton(){
+        searchButton.setOnAction(actionEvent -> searchInputFieldWriteOutputField());
+    }
+    private void searchInputFieldWriteOutputField(){
+        WikipediaConnector connector = new WikipediaConnector();
 
-}
+
+}}
 
