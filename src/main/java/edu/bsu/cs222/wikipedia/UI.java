@@ -3,7 +3,6 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
@@ -23,7 +22,7 @@ public class UI extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) {
         outputField.setEditable(false);
         configure(primaryStage);
         configureSearchButton();
@@ -44,12 +43,10 @@ public class UI extends Application {
     return root;
     }
     private void configureSearchButton(){
-        searchButton.setOnAction(actionEvent -> {
+        searchButton.setOnAction(event -> {
             try {
                 searchInputFieldWriteOutputField();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            } catch (URISyntaxException e) {
+            } catch (IOException | URISyntaxException e) {
                 throw new RuntimeException(e);
             }
         });
