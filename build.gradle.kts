@@ -16,8 +16,8 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.1")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.1")
     implementation(group = "org.slf4j", name = "slf4j-nop", version = "2.0.9")
-    implementation(group = "com.jayway.jsonpath", name = "json-path", version = "2.8.0")
-    implementation(group = "net.minidev", name = "json-smart", version = "2.5.0")
+    implementation(group = "com.jayway.jsonpath", name = "json-path", version = "2.9.0")
+    implementation(group = "net.minidev", name = "json-smart", version = "2.5.2")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     testImplementation(platform("org.junit:junit-bom:5.10.1"))
 }

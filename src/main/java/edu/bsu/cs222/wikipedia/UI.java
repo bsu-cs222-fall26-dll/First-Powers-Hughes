@@ -3,8 +3,6 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -44,7 +42,7 @@ public class UI extends Application {
     return root;
     }
     private void configureSearchButton(){
-        searchButton.setOnAction(event -> {
+        searchButton.setOnAction(_ -> {
             try {
                 searchInputFieldWriteOutputField();
             } catch (IOException | URISyntaxException e) {
