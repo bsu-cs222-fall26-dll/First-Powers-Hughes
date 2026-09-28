@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
+import java.sql.Timestamp;
 
 public class WikipediaRevisionParser {
     public InputStream getJsonData(String userInput) throws IOException, URISyntaxException {
@@ -18,14 +19,15 @@ public class WikipediaRevisionParser {
 
     public JSONArray parse(InputStream DataStream,String rootElement) throws IOException {
         JSONArray result = JsonPath.read(DataStream,rootElement);
+        System.out.println(result);
         return result;
 
     }
-    public String formatOutput(InputStream DataStream) throws IOException {
-
-
-
-        return null;
+    public String formatOutput(InputStream UserStream,InputStream TimestampStream) throws IOException {
+        JSONArray timestamps = parse(TimestampStream,"$..timestamp");
+        JSONArray users = parse(UserStream,"$..user");
+        System.out.println((users.get(0).toString() + timestamps.get(0).toString()));
+        return String.valueOf(timestamps.get(0));
     }
 }
 

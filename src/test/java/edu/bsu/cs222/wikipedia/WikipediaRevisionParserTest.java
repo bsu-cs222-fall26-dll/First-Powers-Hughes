@@ -41,6 +41,17 @@ public class WikipediaRevisionParserTest {
         Assertions.assertEquals("Krightonn",secondUser);
 
     }
+    @Test
+    public void testGetUserAndTimestamp() throws IOException, URISyntaxException {
+        WikipediaRevisionParser parser = new WikipediaRevisionParser();
+        InputStream UserStream = parser.getJsonData("Apollo");
+        InputStream TimestampStream = parser.getJsonData("Apollo");
+        JSONArray user = parser.parse(UserStream,"$..user");
+        JSONArray timestamp = parser.parse(TimestampStream,"$..timestamp");
+
+        String revision = (user.get(0).toString() + timestamp.get(0).toString());
+        Assertions.assertEquals("CockroachHunter2026-09-12T16:46:08Z",revision);
+    }
 
 
 }

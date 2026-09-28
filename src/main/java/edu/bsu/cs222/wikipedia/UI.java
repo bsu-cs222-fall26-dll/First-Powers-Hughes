@@ -53,7 +53,7 @@ public class UI extends Application {
     }
     private void searchInputFieldWriteOutputField() throws IOException, URISyntaxException {
         WikipediaRevisionParser parser = new WikipediaRevisionParser();
-        String output = (parser.formatOutput(parser.getJsonData(inputField.getText())));
+        String output = (parser.formatOutput(parser.getJsonData(inputField.getText()),parser.getJsonData(inputField.getText())));
         outputField.setText(output);
 
 
