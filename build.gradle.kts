@@ -27,9 +27,15 @@ tasks.test {
     useJUnitPlatform()
 }
 javafx {
-    version = "22-ea+16"
+    version = "25"
     modules("javafx.controls", "javafx.fxml")
 }
 application {
     mainClass.set("edu.bsu.cs222.wikipedia.UI")
+
 }
+tasks.named<JavaExec>("run") {
+    jvmArgs("--enable-native-access=javafx.graphics")
+}
+
+
