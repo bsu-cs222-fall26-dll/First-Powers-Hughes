@@ -47,8 +47,13 @@ public class UI extends Application {
     private void searchInputFieldWriteOutputField() throws IOException, URISyntaxException {
         OutputFormatter outputFormatter = new OutputFormatter();
         WikipediaRevisionParser parser = new WikipediaRevisionParser();
+        if (inputField.getText().isBlank()) {
+            outputField.setText("No Page Requested");
+            return;
+        }
         if(WikipediaConnector.connectToWikipedia(inputField.getText())==null){
             outputField.setText("NetworkError");
+            return;
         }
         String output = (outputFormatter.formatOutput(parser.getJsonData(inputField.getText())));
         System.out.println(output);
