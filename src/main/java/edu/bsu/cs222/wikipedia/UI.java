@@ -16,10 +16,6 @@ public class UI extends Application {
     private final TextField inputField = new TextField();
     private final Label outputField = new Label();
 
-    static void main(String[] args) {
-        launch(args);
-    }
-
     @Override
     public void start(Stage primaryStage) {
         configure(primaryStage);

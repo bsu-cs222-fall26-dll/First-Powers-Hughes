@@ -7,6 +7,7 @@ public class WikipediaConnector {
 
     public String startSearcher(String userInput) throws IOException, URISyntaxException {
         URLConnection connection = connectToWikipedia(userInput);
+        assert connection != null;
         String jsonData = readJsonAsStringFrom(connection);
         printRawJson(jsonData);
         return jsonData;
