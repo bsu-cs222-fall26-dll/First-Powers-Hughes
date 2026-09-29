@@ -7,6 +7,7 @@ import java.io.InputStream;
 
 public class OutputFormatter {
     public String formatOutput(InputStream DataStream) throws IOException {
+        JSONArray title = getArrayAndResetDataStream(DataStream,"$..title");
         JSONArray missing = getArrayAndResetDataStream(DataStream,"$..missing");
         JSONArray redirects = getArrayAndResetDataStream(DataStream,"$..redirects");
         JSONArray timestamps = getArrayAndResetDataStream(DataStream,"$..timestamp");
@@ -19,6 +20,9 @@ public class OutputFormatter {
         }
         if(!missing.isEmpty()){
             outputBuilder.append("Page not Found");
+        }
+        else if (title.isEmpty()){
+            outputBuilder.append("Page not Given");
         }
         else{
             for(int i=0;i<16;i++){
