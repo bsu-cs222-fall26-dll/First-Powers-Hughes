@@ -10,11 +10,18 @@ import java.net.URISyntaxException;
 
 public class WikipediaRevisionParserTest {
     @Test
+    public void testDataStreamNotNull() throws IOException {
+        WikipediaRevisionParser parser = new WikipediaRevisionParser();
+        InputStream DataStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("apollloSample.json");
+        JSONArray user = parser.parse(DataStream,"$..user");
+        Assertions.assertNotNull(user);
+    }
+    @Test
     public void testFirstUser() throws IOException {
         WikipediaRevisionParser parser = new WikipediaRevisionParser();
         InputStream DataStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("apollloSample.json");
         JSONArray user = parser.parse(DataStream,"$..user");
-        String firstUser = user.get(0).toString();
+        String firstUser = user.getFirst().toString();
         Assertions.assertEquals("CockroachHunter",firstUser);
     }
     @Test
@@ -44,12 +51,12 @@ public class WikipediaRevisionParserTest {
     @Test
     public void testGetUserAndTimestamp() throws IOException, URISyntaxException {
         WikipediaRevisionParser parser = new WikipediaRevisionParser();
-        InputStream UserStream = parser.getJsonData("Apollo");
-        InputStream TimestampStream = parser.getJsonData("Apollo");
-        JSONArray user = parser.parse(UserStream,"$..user");
-        JSONArray timestamp = parser.parse(TimestampStream,"$..timestamp");
+        InputStream DataStream = parser.getJsonData("Apollo");
+        JSONArray user = parser.parse(DataStream,"$..user");
+        DataStream.reset();
+        JSONArray timestamp = parser.parse(DataStream,"$..timestamp");
 
-        String revision = (user.get(0).toString() + timestamp.get(0).toString());
+        String revision = (user.getFirst().toString() + timestamp.getFirst().toString());
         Assertions.assertEquals("CockroachHunter2026-09-12T16:46:08Z",revision);
     }
 

@@ -7,8 +7,6 @@ import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
-import javax.swing.*;
-import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
@@ -51,8 +49,12 @@ public class UI extends Application {
         });
     }
     private void searchInputFieldWriteOutputField() throws IOException, URISyntaxException {
+        OutputFormatter outputFormatter = new OutputFormatter();
         WikipediaRevisionParser parser = new WikipediaRevisionParser();
-        String output = (parser.formatOutput(parser.getJsonData(inputField.getText())));
+        if(WikipediaConnector.connectToWikipedia(inputField.getText())==null){
+            outputField.setText("NetworkError");
+        }
+        String output = (outputFormatter.formatOutput(parser.getJsonData(inputField.getText())));
         System.out.println(output);
         outputField.setText(output);
 
