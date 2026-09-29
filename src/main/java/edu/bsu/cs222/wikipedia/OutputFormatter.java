@@ -19,10 +19,10 @@ public class OutputFormatter {
             outputBuilder.append("Redirects From: ").append(redirectFrom.getFirst().toString()).append("\n").append("To: ").append(redirectTo.getFirst().toString()).append("\n");
         }
         if(!missing.isEmpty()){
-            outputBuilder.append("Page not Found");
+            outputBuilder.append("No Page Found");
         }
         else if (title.isEmpty()){
-            outputBuilder.append("Page not Given");
+            outputBuilder.append("No Page Requested");
         }
         else{
             for(int i=0;i<16;i++){
