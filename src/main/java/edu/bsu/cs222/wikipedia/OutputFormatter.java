@@ -7,19 +7,23 @@ import java.io.InputStream;
 
 public class OutputFormatter {
     public String formatOutput(InputStream DataStream) throws IOException {
-        WikipediaRevisionParser parser = new WikipediaRevisionParser();
-        JSONArray redirects = parser.parse(DataStream,"$..redirects");
-        DataStream.reset();
-        JSONArray timestamps = parser.parse(DataStream,"$..timestamp");
-        DataStream.reset();
-        JSONArray users = parser.parse(DataStream,"$..user");
+        JSONArray redirects = getArrayAndResetDataStream(DataStream,"$..redirects");
+        JSONArray timestamps = getArrayAndResetDataStream(DataStream,"$..timestamp");
+        JSONArray users = getArrayAndResetDataStream(DataStream,"$..user");
         StringBuilder outputBuilder = new StringBuilder();
         if(!redirects.isEmpty()){
-            outputBuilder.append(redirects.getFirst().toString()).append("\n");
+            JSONArray redirectFrom = getArrayAndResetDataStream(DataStream,"$..from");
+            JSONArray redirectTo = getArrayAndResetDataStream(DataStream,"$..to");
+            outputBuilder.append("Redirects From: ").append(redirectFrom.getFirst().toString()).append("\n").append("To: ").append(redirectTo.getFirst().toString()).append("\n");
         }
         for(int i=0;i<16;i++){
             outputBuilder.append(i+1).append("  ").append(timestamps.get(i).toString()).append("  ").append(users.get(i).toString()).append("\n");
         }
         return outputBuilder.toString();
+    }
+    public JSONArray getArrayAndResetDataStream(InputStream DataStream, String rootElement) throws IOException {
+        WikipediaRevisionParser parser = new WikipediaRevisionParser();
+        DataStream.reset();
+        return parser.parse(DataStream,rootElement);
     }
 }
