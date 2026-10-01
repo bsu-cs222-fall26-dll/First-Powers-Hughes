@@ -2,13 +2,14 @@ package edu.bsu.cs222.wikipedia;
 import java.io.IOException;
 import java.net.*;
 import java.nio.charset.Charset;
+import java.util.Objects;
 
 public class WikipediaConnector {
 
     public String startSearcher(String userInput) throws IOException, URISyntaxException {
         URLConnection connection = connectToWikipedia(userInput);
-        assert connection != null;
-        String jsonData = readJsonAsStringFrom(connection);
+
+        String jsonData = readJsonAsStringFrom(Objects.requireNonNull(connection));
         printRawJson(jsonData);
         return jsonData;
 

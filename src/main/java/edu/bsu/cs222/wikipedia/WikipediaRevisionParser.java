@@ -17,8 +17,8 @@ public class WikipediaRevisionParser {
         return new ByteArrayInputStream(jsonData.getBytes(StandardCharsets.UTF_8));
     }
 
-    public JSONArray parse(InputStream DataStream,String rootElement) throws IOException {
-        JSONArray result = JsonPath.read(DataStream,rootElement);
+    public JSONArray parse(InputStream dataStream,String rootElement) throws IOException {
+        JSONArray result = JsonPath.read(dataStream,rootElement);
         System.out.println(result);
         return result;
 

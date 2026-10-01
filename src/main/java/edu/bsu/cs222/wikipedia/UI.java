@@ -1,11 +1,13 @@
 package edu.bsu.cs222.wikipedia;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -14,7 +16,9 @@ import java.net.URISyntaxException;
 public class UI extends Application {
     private final Button searchButton = new Button("Search");
     private final TextField inputField = new TextField();
-    private final Label outputField = new Label();
+    private final Label outputFieldLabel = new Label("Output");
+    private final Label inputFieldLabel = new Label("Input");
+    final TextArea outputField = new TextArea();
 
     @Override
     public void start(Stage primaryStage) {
@@ -27,12 +31,15 @@ public class UI extends Application {
         stage.setScene(new Scene(createRoot()));
         stage.sizeToScene();
         stage.show();
+        stage.setResizable(false);
     }
     private BorderPane createRoot(){
         BorderPane root = new BorderPane();
-        root.setTop(inputField);
+        root.setLeft(inputField);
         root.setCenter(searchButton);
         root.setBottom(outputField);
+        root.setTop(inputFieldLabel);
+
     return root;
     }
     private void configureSearchButton(){
