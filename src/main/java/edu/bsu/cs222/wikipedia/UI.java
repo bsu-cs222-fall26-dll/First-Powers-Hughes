@@ -61,9 +61,8 @@ public class UI extends Application {
             outputField.setText("NetworkError");
             return;
         }
-        String output = (outputFormatter.formatOutput(parser.getJsonData(inputField.getText())));
-        System.out.println(output);
-        outputField.setText(output);
+        System.out.println(outputFormatter.formatOutput(parser.getJsonData(inputField.getText())));
+        outputField.setText(outputFormatter.formatOutput(parser.getJsonData(inputField.getText())));
 
 
 
