@@ -18,9 +18,7 @@ public class WikipediaRevisionParser {
     }
 
     public JSONArray parse(InputStream dataStream,String rootElement) throws IOException {
-        JSONArray result = JsonPath.read(dataStream,rootElement);
-        System.out.println(result);
-        return result;
+        return JsonPath.read(dataStream,rootElement);
 
     }
 }
