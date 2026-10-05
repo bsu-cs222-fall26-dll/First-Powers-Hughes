@@ -24,6 +24,7 @@ public class ReadJsonFromFileTest {
         JSONArray revisions = getRevisionsFromJson(jsonData);
         Assertions.assertEquals(4, revisions.size());
     }
+    
 
     private String readSampleFileAsString() throws NullPointerException, IOException {
         InputStream sampleFile = Thread.currentThread().getContextClassLoader()

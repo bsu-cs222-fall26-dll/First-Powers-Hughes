@@ -9,9 +9,7 @@ public class WikipediaConnector {
     public String startSearcher(String userInput) throws IOException, URISyntaxException {
         URLConnection connection = connectToWikipedia(userInput);
 
-        String jsonData = readJsonAsStringFrom(Objects.requireNonNull(connection));
-        printRawJson(jsonData);
-        return jsonData;
+        return readJsonAsStringFrom(Objects.requireNonNull(connection));
 
     }
 
@@ -35,8 +33,6 @@ public class WikipediaConnector {
         return new String(connection.getInputStream().readAllBytes(), Charset.defaultCharset());
     }
 
-    private static void printRawJson(String jsonData) {
-        System.out.println(jsonData);
-    }
+
 
 }

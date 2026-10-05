@@ -16,9 +16,8 @@ import java.net.URISyntaxException;
 public class UI extends Application {
     private final Button searchButton = new Button("Search");
     private final TextField inputField = new TextField();
-    private final Label outputFieldLabel = new Label("Output");
-    private final Label inputFieldLabel = new Label("Input");
-    final TextArea outputField = new TextArea();
+    private final Label inputFieldLabel = new Label("Input:");
+    final TextArea outputField = new TextArea("Output");
 
     @Override
     public void start(Stage primaryStage) {
