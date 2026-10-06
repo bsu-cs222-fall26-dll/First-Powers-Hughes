@@ -12,3 +12,5 @@ A restricted method in java.lang.System has been called
 A terminally deprecated method in sun.misc.Unsafe has been called
 
 They happen in Javafx and do not affect the running of the program.
+
+Use the GUI by running ProjectOnePowersHughs through graddle and interacting with the GUI box.
